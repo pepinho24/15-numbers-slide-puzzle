@@ -1,0 +1,29 @@
+﻿body {
+}
+
+#container {
+    width: 500px;
+}
+
+    #container div {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        background: red;
+        margin: 5px;
+        vertical-align:middle;
+        float: left;
+        font-size:40px;
+        cursor:pointer;
+    }
+        #container div#empty {
+            background : white;
+            cursor:default;
+        }
+        #container div > p {
+           text-align: center;
+           line-height:50px;
+           margin-top: 25%;
+          
+        }
+        
