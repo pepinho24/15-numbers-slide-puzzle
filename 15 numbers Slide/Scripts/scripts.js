@@ -1,35 +1,50 @@
 ﻿/// <reference path="jquery-2.1.1.intellisense.js" />
 
 window.onload = function () {
+    var score = 0;
+
     $('#btn-start-new-game').on('click', function () {
         shuffleNumbers();
+        score = 0;
+        $scoreContainer.html('<p>Score : ' + score + '</p>');
     })
 
 
     var $empty = $("#empty");
     var $container = $("#container");
+    var $scoreContainer = $("#score-container");
+    $scoreContainer.html('<p>Score : ' + score + '</p>');
 
     $container.children('div').addClass('clickable');
-    $empty.removeClass('clickable')
+    $empty.removeClass('clickable');
+    
+
+    function updateScore(scorePoints) {
+        score += scorePoints;
+        $scoreContainer.html('<p>Score : ' + score + '</p>');
+    }
+
     $container.on('click', 'div.clickable', function () {
         var $this = $(this);
         var $prev = $this.prev();
         var $next = $this.next();
-        var $current;
 
         if ($this.prev().prev().prev().prev().attr('id') === "empty") { // up
             $this.insertBefore($empty);
             $empty.insertAfter($prev);
+            updateScore(1);
 
         } else if ($this.next().next().next().next().attr('id') === "empty") { // down
             $this.insertAfter($empty);
             $empty.insertBefore($next);
+            updateScore(1);
 
         } else if ($this.prev().attr('id') === "empty") { // left
             var index = $this.index() + 1;
             //console.log(index)
             if (index % 4 !== 1) {
                 $this.insertBefore($empty);
+                updateScore(1);
             } 
 
         } else if ($this.next().attr('id') === "empty") { // right
@@ -37,13 +52,13 @@ window.onload = function () {
             //console.log(index)
             if (index % 4 !== 0) {
                 $empty.insertBefore($this);
+                updateScore(1);
             }
         }
 
         // check if numbers are ordered
         if (checkIfNumbersAreOrdered()) { // if true => game over, you win
             alert('You win');
-
         }
     });
 
