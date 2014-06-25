@@ -1,11 +1,42 @@
 ﻿body {
 }
 
+#wrapper {
+    width: 500px;
+    height: auto;
+    background-image: url("../Images/wood-texture-dark.jpg");
+}
+
+#score-container {
+    margin-left: 5px;
+    padding: 10px;
+    display: inline-block;
+}
+
+    #score-container > p {
+        margin-left: 5px;
+        padding: 10px;
+        background: url("../Images/wood-texture-background.jpg");
+        font-size:large;
+    }
+
+#btn-start-new-game {
+    margin: 25px;
+    padding: 10px;
+    background: url("../Images/wood-texture-background.jpg");
+    display: inline-block;
+}
+    #btn-start-new-game:hover {
+        border-style:inset;
+    }
+
 #container {
     width: 460px;
     height: 460px;
-    border: 1px solid black;
+    margin: auto;
+    /*border: 1px solid black;*/
 }
+
 
     #container div {
         width: 100px;
@@ -17,17 +48,17 @@
     }
 
         #container div.clickable {
-            background: red;
+            background: url("../Images/wood-texture-background.jpg");
             cursor: pointer;
             font-size: 40px;
-            border:1px solid black;
-            border-radius:5px;
+            border: 1px solid black;
+            border-radius: 5px;
         }
 
         #container div#empty {
-            background: white;
+            opacity: 0;
             cursor: default;
-            border:1px solid white;
+            border: 1px solid white;
         }
 
         #container div > p {
