@@ -4,7 +4,7 @@ window.onload = function () {
     $('#btn-start-new-game').on('click', function () {
         shuffleNumbers();
     })
-       
+
 
     var $empty = $("#empty");
     var $container = $("#container");
@@ -26,17 +26,25 @@ window.onload = function () {
             $empty.insertBefore($next);
 
         } else if ($this.prev().attr('id') === "empty") { // left
-            $this.insertBefore($empty);
+            var index = $this.index() + 1;
+            //console.log(index)
+            if (index % 4 !== 1) {
+                $this.insertBefore($empty);
+            } 
 
         } else if ($this.next().attr('id') === "empty") { // right
-            $empty.insertBefore($this);
+            index = $this.index() + 1;
+            //console.log(index)
+            if (index % 4 !== 0) {
+                $empty.insertBefore($this);
+            }
         }
 
         // check if numbers are ordered
         if (checkIfNumbersAreOrdered()) { // if true => game over, you win
             alert('You win');
 
-        } 
+        }
     });
 
     function checkIfNumbersAreOrdered() {
