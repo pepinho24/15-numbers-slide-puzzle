@@ -3,6 +3,21 @@
 window.onload = function () {
     var score = 0;
 
+    var $inputBackground = $('#input-background');
+    
+    $inputBackground.on('change', function () {
+        
+        var url = 'url(' + this.value + ')';
+        $('#wrapper').css('background-image', url)
+    })
+
+    var $inputBlock = $('#input-block');
+    $inputBlock.on('change', function () {
+        
+        var url = 'url(' + this.value + ')';
+        $('#container div.clickable').css('background-image', url)
+    })
+
     $('#btn-start-new-game').on('click', function () {
         shuffleNumbers();
         score = 0;
